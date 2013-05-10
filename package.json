@@ -14,7 +14,6 @@
     "start": "node app.js"
   },
   "engines": {
-    "node": "*"
-  },
-  "subdomain": "bao"
+    "node": "0.8.14"
+  }
 }
