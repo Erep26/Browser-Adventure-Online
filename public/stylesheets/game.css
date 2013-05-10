@@ -1,0 +1,193 @@
+#divCanvas{
+    position:relative;
+    margin: auto;
+    background-color: transparent;
+    border: solid 1px black;
+    width: 1000px;
+    height: 500px;
+}
+
+#divCanvas canvas{
+    position: absolute;
+    top:0;
+    left:0;
+}
+
+#canvasBot{ z-index: 0;}
+#canvasMid{ z-index: 1;}
+#canvasTop{ z-index: 2;}
+#canvasInterface{ z-index: 3;}
+
+#divChat{
+    width: 1000px;
+    margin: auto;
+    margin-bottom: 50px;
+    position:relative;
+    
+}
+
+#divChat #textoChat{
+    width: 90%;
+    height: 100%;
+    float: left;
+}
+
+#divChat .btn{
+    width: 9%;
+    float: left;
+    height: 100%;
+}
+
+
+
+#conversacion{
+    background-color: rgba(0, 0, 0, .5);
+    border-radius: 10px 10px 0px 0px;
+    height: 80px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    color: white;
+}
+
+#conversacion p{
+    width: 900px;
+}
+
+.person
+{
+    float: left;
+}
+
+@-webkit-keyframes play {
+    0% { background-position: 0px 0px;}
+    25% { background-position: 128px 0px;}
+
+    25.1% { background-position: 0px -48px;}
+    50% { background-position: 128px -48px;}
+
+    50.1% { background-position: 0px -96px;}
+    75% { background-position: 128px -96px;}
+
+    75.1% { background-position: 0px -144px;}
+    100% { background-position: 128px -144px;}
+}
+
+@-moz-keyframes play {
+    0% { background-position: 0px 0px;}
+    25% { background-position: 128px 0px;}
+
+    25.1% { background-position: 0px -48px;}
+    50% { background-position: 128px -48px;}
+
+    50.1% { background-position: 0px -96px;}
+    75% { background-position: 128px -96px;}
+
+    75.1% { background-position: 0px -144px;}
+    100% { background-position: 128px -144px;}
+}
+
+@-ms-keyframes play {
+   0% { background-position: 0px 0px;}
+    25% { background-position: 128px 0px;}
+
+    25.1% { background-position: 0px -48px;}
+    50% { background-position: 128px -48px;}
+
+    50.1% { background-position: 0px -96px;}
+    75% { background-position: 128px -96px;}
+
+    75.1% { background-position: 0px -144px;}
+    100% { background-position: 128px -144px;}
+}
+
+@-o-keyframes play {
+    0% { background-position: 0px 0px;}
+    25% { background-position: 128px 0px;}
+
+    25.1% { background-position: 0px -48px;}
+    50% { background-position: 128px -48px;}
+
+    50.1% { background-position: 0px -96px;}
+    75% { background-position: 128px -96px;}
+
+    75.1% { background-position: 0px -144px;}
+    100% { background-position: 128px -144px;}
+}
+
+@keyframes play {
+    0% { background-position: 0px 0px;}
+    25% { background-position: 128px 0px;}
+
+    25.1% { background-position: 0px -48px;}
+    50% { background-position: 128px -48px;}
+
+    50.1% { background-position: 0px -96px;}
+    75% { background-position: 128px -96px;}
+
+    75.1% { background-position: 0px -144px;}
+    100% { background-position: 128px -144px;}
+}
+
+.pers
+{
+    width: 32px;
+    height: 48px;
+    margin-left: 15px;
+
+    -webkit-animation: play 3s steps(4) infinite normal;
+    -moz-animation: play 3s steps(4) infinite normal;
+    -ms-animation: play 3s steps(4) infinite normal;
+    -o-animation: play 3s steps(4) infinite normal;
+    animation: play 3s steps(4) infinite normal;
+}
+
+#pers1 {background:url('../images/game/char/1.png');}
+#pers2 {background:url('../images/game/char/2.png');}
+#pers3 {background:url('../images/game/char/3.png');}
+#pers4 {background:url('../images/game/char/4.png');}
+#pers5 {background:url('../images/game/char/5.png');}
+#pers6 {background:url('../images/game/char/6.png');}
+#pers7 {background:url('../images/game/char/7.png');}
+#pers8 {background:url('../images/game/char/8.png');}
+#pers9 {background:url('../images/game/char/9.png');}
+#pers10{background:url('../images/game/char/10.png');}
+#pers11{background:url('../images/game/char/11.png');}
+#pers12{background:url('../images/game/char/12.png');}
+#pers13{background:url('../images/game/char/13.png');}
+#pers14{background:url('../images/game/char/14.png');}
+#pers15{background:url('../images/game/char/15.png');}
+#pers16{background:url('../images/game/char/16.png');}
+#pers17{background:url('../images/game/char/17.png');}
+#pers18{background:url('../images/game/char/18.png');}
+#pers19{background:url('../images/game/char/19.png');}
+#pers20{background:url('../images/game/char/20.png');}
+#pers21{background:url('../images/game/char/21.png');}
+#pers22{background:url('../images/game/char/22.png');}
+#pers23{background:url('../images/game/char/23.png');}
+#pers24{background:url('../images/game/char/24.png');}
+#pers25{background:url('../images/game/char/25.png');}
+#pers26{background:url('../images/game/char/26.png');}
+#pers27{background:url('../images/game/char/27.png');}
+#pers28{background:url('../images/game/char/28.png');}
+#pers29{background:url('../images/game/char/29.png');}
+#pers30{background:url('../images/game/char/30.png');}
+#pers31{background:url('../images/game/char/31.png');}
+#pers32{background:url('../images/game/char/32.png');}
+#pers33{background:url('../images/game/char/33.png');}
+#pers34{background:url('../images/game/char/34.png');}
+#pers35{background:url('../images/game/char/35.png');}
+#pers36{background:url('../images/game/char/36.png');}
+#pers37{background:url('../images/game/char/37.png');}
+#pers38{background:url('../images/game/char/38.png');}
+#pers39{background:url('../images/game/char/39.png');}
+#pers40{background:url('../images/game/char/40.png');}
+#pers41{background:url('../images/game/char/41.png');}
+#pers42{background:url('../images/game/char/42.png');}
+#pers43{background:url('../images/game/char/43.png');}
+#pers44{background:url('../images/game/char/44.png');}
+#pers45{background:url('../images/game/char/45.png');}
+
+#personajes
+{
+    width: 470px;
+}

@@ -1,0 +1,69 @@
+extends layout
+block head
+    link(rel='stylesheet', href='/stylesheets/game.css')
+    name(style="display: none;")= name
+    x(style="display: none;")= x
+    y(style="display: none;")= y
+    script(src='/socket.io/socket.io.js')
+    script
+      //var socket = io.connect('http://localhost',{ port: 5000 });
+      var socket = io.connect(location.host.substring(0, location.host.indexOf(":")));
+      
+block content
+    //h4#fps
+    #personajes.modal.fade.active
+            .modal-header
+                h1 Personajes
+            .modal-body
+                - for (var i=1; i<=45; i++)
+                    .person
+                        .pers(id="pers" + i)
+                        if(i==imgPers)
+                            input(type="radio", name="pers", value=i, checked="true")
+                        else
+                            input(type="radio", name="pers", value=i)
+                    //img(src="/images/game/char/" + i + ".png", style=)
+            .modal-footer
+                h4.pull-left Relogueate para hacer efectivos los cambios
+                input(type="button", value="Guardar", onclick="guardaPers($('input:radio[name=pers]:checked').val())", data-dismiss='modal').btn.btn-primary
+
+    #divCanvas
+        canvas#canvasBot(height="500px", width="1000px")
+        canvas#canvasMid(height="500px", width="1000px")
+        canvas#canvasTop(height="500px", width="1000px")
+        canvas#canvasInterface(height="500px", width="1000px")
+    #divChat
+        #conversacion
+        form(onsubmit='return enviaChat(this);')
+            //input#enviaA(type='text', name='pers')
+            input#textoChat(type='text', name = 'text', required = "true")
+            button.btn.btn-primary(type='submit') Envia
+
+    .btn-group
+        a.btn(data-toggle="modal", data-target="#personajes")
+            .icon-user
+            |&nbsp Cambiar personaje
+        a.btn(onclick="musicOnOff()")
+            #btnAudioMusic.icon-volume-up
+            |&nbsp Musica
+        a.btn(onclick="chatOnOff()")
+            #btnAudioChat.icon-volume-up
+            |&nbsp Chat
+
+    audio#bgm(autoplay, loop)
+        source(src="audio/music.mp3", type="audio/mp3")
+        source(src="audio/music.ogg", type="audio/ogg")
+    audio#chs
+        source(src="audio/chatMessage.mp3", type="audio/mp3")
+        source(src="audio/chatMessage.ogg", type="audio/ogg")
+
+
+block scripts
+    script(src='javascripts/game/interfase.js')
+    script(src='javascripts/game/events.js')
+    script(src='javascripts/game/AnimationFrame.js')
+    script(src='javascripts/game/fps.js')
+    script(src='javascripts/game/mapa.js')
+    script(src='javascripts/game/audio.js')
+    script(src='javascripts/game/player.js')
+    script(src='javascripts/game/game.js')
