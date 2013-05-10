@@ -2,7 +2,7 @@
   "name": "Browser_Adventure_Online",
   "description": "Proyecto_DAM2A",
   "author": "Pere_Civit",
-  "version": "0.0.1-9",
+  "version": "0.0.1-10",
   "dependencies": {
     "express": "3.2.1",
     "jade": "0.30.0",
@@ -16,5 +16,5 @@
   "engines": {
     "node": "*"
   },
-  "subdomain": "prodam"
+  "subdomain": "bao"
 }
