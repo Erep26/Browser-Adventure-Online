@@ -18,7 +18,7 @@
 
 var mongoose = require("mongoose"); //moongoose es el modulo de node.js que usraemos para conectarnos a la base de datos
 //mongodb://ip del servidor donde esta nuestra base de datos / nuestra base de datos
-mongoose.connect("mongodb://BrowserAdventureOnline:baoDB10513@dharma.mongohq.com:10047/baodb", function(err){
+mongoose.connect("mongodb://nodejitsu:054a021b4d09412a13364c71405d5b92@alex.mongohq.com:10080/nodejitsudb1124346526", function(err){
     if(!err) console.log("Mongoose conectado");
     else throw err;
 });
