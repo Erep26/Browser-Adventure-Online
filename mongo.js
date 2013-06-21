@@ -18,7 +18,7 @@
 
 var mongoose = require("mongoose"); //moongoose es el modulo de node.js que usraemos para conectarnos a la base de datos
 //mongodb://ip del servidor donde esta nuestra base de datos / nuestra base de datos
-mongoose.connect("mongodb://nodejitsu:054a021b4d09412a13364c71405d5b92@alex.mongohq.com:10080/nodejitsudb1124346526", function(err){
+mongoose.connect("mongodb://baodb1234:baodb1234@ds029778.mongolab.com:29778/af_bao-neginyat" , function(err){
     if(!err) console.log("Mongoose conectado");
     else throw err;
 });
@@ -31,6 +31,8 @@ var jugadores = mongoose.Schema({
     Nivel           :   Number,
     Posicion        :   {x: Number,
                          y: Number},
+    Vida            :   Number,
+    Mana            :   Number,
     Imagen          :   Number/*,
     Habilidades     :   Oid,
     Objetos         :   Oid,

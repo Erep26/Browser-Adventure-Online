@@ -4,8 +4,7 @@
 function carregaInterficie()
 {
     var ctxInterface = document.getElementById('canvasInterface').getContext('2d');//agafa el context 2d del canvas
-    var bolsa = new Image();
-    bolsa.src="images/game/bolsa.png";
+    var bolsa = img.bolsa;
     // fill    --> color de fons
     // stroke  --> color de linea
     
@@ -60,7 +59,7 @@ function carregaInterficie()
     ctxInterface.strokeRect(640,440,50,50);
     ctxInterface.strokeRect(700,440,50,50);
     ctxInterface.strokeRect(760,440,50,50);
-    //ctxInterface.drawImage(bolsa, 0, 0, 700, 300);
+    ctxInterface.drawImage(bolsa, 850, 350, 150, 150);
     /*ctx.drawImage(        bolsa,             //imagen
                           0, //posicion x en la imagen
                           0,     //posicion y en la imagen

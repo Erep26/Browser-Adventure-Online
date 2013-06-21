@@ -26,7 +26,7 @@ exports.notice = function(req, res){
 var mongo = require('../mongo')
 
 exports.Login = function(req, res){
-    console.log(req.body.User + " " + req.body.Pass);
+    //console.log(req.body.User + " " + req.body.Pass);
     mongo.jugadores.findOne({'Nombre': req.body.User
                             ,'Password': req.body.PassEncryp}, function(err, docs){
         if(!err)
@@ -38,7 +38,14 @@ exports.Login = function(req, res){
             else{
                 //console.log(docs);
                 //res.json({ resp: 'Loguin correcto', STATUS: 1});
-                res.render('game', {title: 'game', name: req.body.User, 'x': docs.Posicion.x, 'y': docs.Posicion.y, imgPers: docs.Imagen});
+                res.render('game', {title: 'game'
+                                    ,name: req.body.User
+                                    ,'x': docs.Posicion.x
+                                    ,'y': docs.Posicion.y
+                                    ,imgPers: docs.Imagen
+                                    ,VIDA: docs.Vida
+                                    ,MANA: docs.Mana
+                                    ,MAP: req.body.mapa});
             }
         }
     });
@@ -56,6 +63,8 @@ exports.Reg = function(req, res){
                                     ,Posicion: {x: 10,
                                                 y: 10}
                                     ,Imagen: 1
+                                    ,Vida: 100
+                                    ,Mana: 100
                         }).save(function(err){
                     if(!err) res.json({ resp: 'Usuario introducido correctamente@'});
                     else throw err;

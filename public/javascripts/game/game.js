@@ -1,33 +1,24 @@
 /*
  *En aquest arxiu es desenvolupa la logica del joc
 */
-//Canvas que serveixen com a buffers on es dibuixa i despres es copia el contingut al canvas que es veu
-var canvas = document.createElement('canvas'),
-    canvas2 = document.createElement('canvas');
-    canvas.width = canvas2.width = 1000;
-    canvas.height = canvas2.height = 500;
-var ctx = canvas.getContext('2d'),
-    ctx2 = canvas2.getContext('2d');
-//------------------------------------------------
-
-var mousex = mousey = 0;//variables pel control del ratoli
-var player;//variable del jugador
-var canvasMap = new Array();//array on estan els canvas
-var otherPlayers = new Array();//aray on es guarden els jugadors remots
-
 window.onload = function(){
+
+    modStatus(0,0);
+    player = new pj($('x').text(), $('y').text(), eval("img.p" + $('input:radio[name=pers]:checked').val()) , $('name').text());
+
     canvasMap[0] = document.getElementById('canvasBot').getContext('2d');
     canvasMap[1] = document.getElementById('canvasMid').getContext('2d');
-    canvasMap[2] = document.getElementById('canvasTop').getContext('2d');
 
-    //ctx2 es un dels buffers que em definit abans que farem servir per pintar el mapa
-    drawTiles(canvasMap[0],ctx2,canvasMap[2]);
+    drawTiles(canvasMap[0],canvasMap[1]/*,canvasMap[2]*/);
 
     events();//event
-    carregaInterficie();//la interfaz d'usuari
+    //carregaInterficie();//la interfaz d'usuari
 
-    //Creem l'usiuari
-    player = new pj($('x').text(), $('y').text(), "/images/game/char/" + $('input:radio[name=pers]:checked').val() + ".png", $('name').text());
+    //Creem l'usuari
+    //
+
+
+    //console.log(collision);
 
     //Bucle del joc
     run();
@@ -35,39 +26,48 @@ window.onload = function(){
 
 function run()
 {
-    /*
-    es pinta el mapa --> canvas2 (fora del bucle)
-    bucle:
-         ___________________________
-        |                           |
-        v                           |
-    canvaMap[1] (el que es veu)     |
-        |                           |
-        |es borra i pintem...       |
-        v                           |
-     canvas                         |
-        |                           |
-        |es borra i pintem          |
-        v                           |
-     canvas2                        |
-        i                           |
-    personatjes                     |
-        |___________________________|
-     */
-    canvasMap[1].clearRect(0, 0, canvas.width, canvas.height);
-    canvasMap[1].drawImage(canvas, 0, 0);
-
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.drawImage(canvas2, 0, 0);
-
-    ctx.strokeRect(mousex,mousey,wCanvas,wCanvas);
+    ctx.drawImage(canvasBuffer, 0, 0);
+    ctx.strokeRect(mousex,mousey,32,32);
 
     //per veure els fps calculats
     //$('#fps').text("fps: " + fpscal())
 
+    ctxBuff.clearRect(0, 0, canvasBuffer.width, canvasBuffer.height);
     player.move();//moviment personatje
     for(var n in otherPlayers)//mobiment altres personatges
-        otherPlayers[n].move();
-    
+        if(otherPlayers[n].map == player.map)
+            otherPlayers[n].move();
+
+    warp();
+
+    deleteFire = new Array();
+    for(var n in fireballs)
+    {
+        if(fireballs[n].map == player.map)
+        {
+            fireballs[n].mou();
+
+            for(var per in otherPlayers)
+            {
+                if(Math.floor(otherPlayers[per].x/tileSize) == Math.floor(fireballs[n].posX/tileSize) &&
+                    Math.floor(otherPlayers[per].y/tileSize) == Math.floor(fireballs[n].posY/tileSize))
+                    deleteFire.push(n);
+            }
+
+            if(Math.floor(player.x/tileSize) == Math.floor(fireballs[n].posX/tileSize) &&
+                Math.floor(player.y/tileSize) == Math.floor(fireballs[n].posY/tileSize))
+            {
+                deleteFire.push(n);
+                modStatus(-25, 0);
+            }
+        }
+    }
+
+    deleteFire.forEach(function(f){
+        fireballs.splice(f, 1);
+    });
+
+
     window.requestAnimationFrame(run);
 }
