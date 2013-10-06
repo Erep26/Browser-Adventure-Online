@@ -90,7 +90,7 @@ socket.on('connection', function(io){
       io.broadcast.emit('otherMove', {'id': io.id, 'x': moveTo.x, 'y': moveTo.y});
       });
 
-    /*
+    /*s
     io.on('xyInicial', function(pos){
       players[io.id][0] = pos.x;
       players[io.id][1] = pos.y;
