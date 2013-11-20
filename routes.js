@@ -23,7 +23,7 @@ exports.notice = function(req, res){
 /*
  * POST
  */
-var mongo = require('../mongo')
+var mongo = require('./mongo')
 
 exports.Login = function(req, res){
     //console.log(req.body.User + " " + req.body.Pass);
